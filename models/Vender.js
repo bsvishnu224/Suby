@@ -13,25 +13,22 @@ const venderSchema= new mongoose.Schema({
     password:{
         type:String,
         required:true
-    }
+    },
+    firm:[
+        {
+            type:mongoose.Schema.Types.ObjectId,
+            ref:"Firm"
+        }
+    ]
 })
 
 
 
 const Vender=mongoose.model("Vender",venderSchema)
 
-const passwordSchema= new mongoose.Schema({
-    password:{
-        type:String
-    },
-    user:{
-        type:mongoose.Schema.Types.ObjectId,ref:"Vender"
-    }
-})
-
-const Password=mongoose.model("Password",passwordSchema)
 
 
-module.exports=Vender,Password
+
+module.exports=Vender
 
 

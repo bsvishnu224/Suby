@@ -2,8 +2,11 @@ const express= require("express");
 const dotEnv=require("dotenv")
 const mongoose=require("mongoose")
 const venderRoutes=require('./router/venderRouter')
+const firmRoute=require('./router/firmRoutes')
+const productRoute=require('./router/productRoutes')
 const bodyParser=require("body-parser")
 const  app =express()
+const path=require("path")
 
 dotEnv.config()
 
@@ -19,6 +22,10 @@ mongoose.connect(process.env.mongo_URI)
 
 app.use(bodyParser.json())
 app.use('/vender',venderRoutes)
+app.use('/firm',firmRoute)
+app.use('/product',productRoute)
+app.use('/uploads',express.static("uploads"))
+
 
 
 app.listen(PORT,()=>{
