@@ -24,7 +24,7 @@ const venderRegister= async (req,res)=>{
         const venderEmail= await Vender.findOne({email})
         
         if (venderEmail){
-            return res.status(400).json("Email already taken")
+            return res.status(400).json({massege:"email alredy taken"})
             
         }
         const hashedPassword= await bcrypt.hash(password,10) ;
